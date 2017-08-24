@@ -32,8 +32,6 @@ router.post('/signup', (req, res) => {
 
     // CHECK USER EXISTANCE
     Account.findOne({ username: req.body.username }, (err, exists) => {
-      console.log(req.body.username+"@@"+req.body.password);
-
         if (err) throw err;
         if(exists){
             return res.status(409).json({
@@ -136,19 +134,29 @@ router.post('/logout', (req, res) => {
 */
 router.get('/search/:username', (req, res) => {
     // SEARCH USERNAMES THAT STARTS WITH GIVEN KEYWORD USING REGEX
-    var re = new RegExp('^' + req.params.username);
-    Account.find({username: {$regex: re}}, {_id: false, username: true})
+    // var re = new RegExp('^' + req.params.username);
+    console.log('get search user');
+    // Account.find({username: {$regex: re}}, {_id: false, username: true})
+    Account.find({username: new RegExp(req.params.username, 'i')})
     .limit(5)
     .sort({username: 1})
     .exec((err, accounts) => {
-        if(err) throw err;
-        res.json(accounts);
+      if(err) throw err;
+      res.json(accounts);
     });
 });
 
 // EMPTY SEARCH REQUEST: GET /api/account/search
 router.get('/search', (req, res) => {
-    res.json([]);
+  console.log('get user list');
+  Account.find()
+  .sort({_id: 1})
+  .exec((err, accounts) => {
+    if(err) throw err;
+    res.json(accounts);
+  });
 });
+
+
 
 export default router;

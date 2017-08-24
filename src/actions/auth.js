@@ -15,14 +15,11 @@ import axios from 'axios';
 export function loginRequest(username, password) {
     return (dispatch) => {
             dispatch(login());
-            console.log("Call Login API");
             return axios.post('/api/account/signin', { username, password })
             .then((response) => {
                 dispatch(loginSuccess(username));
-                console.log("loginSuccess");
             }).catch((error) => {
                 dispatch(loginFailure());
-                console.log("loginFailure");
             });
     };
 }
@@ -33,10 +30,9 @@ export function login() {
     };
 }
 
-export function loginSuccess(username) {
+export function loginSuccess(response) {
     return {
         type: AUTH_LOGIN_SUCCESS,
-        username
     };
 }
 

@@ -23,13 +23,10 @@ class Header extends React.Component {
         <nav>
           <div className="nav-wrapper darken-1">
             <Link to="/" className="brand-logo center">Book Sharing System</Link>
-              <ul>
-                <li><a><i className="material-icons">search</i></a></li>
-              </ul>
             <div className="right">
               <ul>
                 <li>{ this.props.isLoggedIn ? `Welcome ${this.props.currentUser}` : undefined }</li>
-                <li>{ this.props.isLoggedIn ? logoutButton : loginButton }</li>
+                { this.props.isLoggedIn ? logoutButton : loginButton }
               </ul>
             </div>
           </div>

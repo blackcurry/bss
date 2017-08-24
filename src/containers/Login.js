@@ -14,7 +14,6 @@ class Login extends React.Component {
   handleLogin(id, pw){
     return this.props.loginRequest(id, pw).then(
       () => {
-        console.log(`start handleLogin ${this.props.status} status`);
         if(this.props.status === "SUCCESS"){
           let loginData = {
             isLoggedIn: true,
@@ -24,7 +23,7 @@ class Login extends React.Component {
           document.cookie = 'key=' + btoa(JSON.stringify(loginData));
 
           Materialize.toast('Welcome, ' + id + '!', 2000);
-          browserHistory.push('/Admin');
+          browserHistory.push('/admin');
           return true;
         } else {
           let $toastContent = $('<span style="color: #FFB4BA">Incorrect username or password</span>');

@@ -1,11 +1,19 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
+import { AdminView } from 'components';
 
-const Admin = () => {
+class Admin extends React.Component {
+  constructor(props) {
+      super(props);
+  }
+
+  render() {
     return (
         <div>
-            관리자
+            <AdminView />
         </div>
     );
+  }
 };
 
 export default Admin;

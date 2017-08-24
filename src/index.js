@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 // Container Components
-import { App, Login, Admin} from 'containers';
+import { App, Login, Admin, AdminMember, AddMember} from 'containers';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -23,6 +23,8 @@ ReactDOM.render(
             <IndexRoute component={Login}/>
             <Route path="login" component={Login}/>
             <Route path="admin" component={Admin}/>
+            <Route path="adminMember" component={AdminMember}/>
+            <Route path="addMember" component={AddMember}/>
         </Route>
     </Router>
   </Provider>, rootElement

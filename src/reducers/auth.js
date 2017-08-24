@@ -29,7 +29,6 @@ export default function auth(state, action) {
         }
       });
     case types.AUTH_LOGIN_SUCCESS:
-      console.log("reducers AUTH_LOGIN_SUCCESS");
       return update(state, {
         login: {
           status: { $set: 'SUCCESS' }

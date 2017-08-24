@@ -29,7 +29,7 @@ mongoose.connect('mongodb://soon:ki@ds131729.mlab.com:31729/react_memo');
 
 /* use session */
 app.use(session({
-    secret: 'CodeLab1$1$234',
+    secret: 'BSS$1$234',
     resave: false,
     saveUninitialized: true
 }));

@@ -1,4 +1,5 @@
 import auth from './auth';
+import admin from './admin';
 // import memo from './memo';
 // import search from './search';
 
@@ -6,5 +7,5 @@ import auth from './auth';
 import { combineReducers } from 'redux';
 
 export default combineReducers({
-  auth
+  auth, admin
 });
