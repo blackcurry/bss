@@ -5,16 +5,17 @@ class AdminView extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        username: "",
-        firstname: "",
-        lastname: "",
-        password: "",
-        email: "",
-        permission: "NORMAL"
+          username: '',
+          firstname: '',
+          lastname: '',
+          password: '',
+          email: '',
+          permission: 'NORMAL'
+
       };
       this.handleChange = this.handleChange.bind(this);
-      this.handleAddMember = this.handleAddMember.bind(this);
       this.handleRadioClick = this.handleRadioClick.bind(this);
+      this.handleAddMember = this.handleAddMember.bind(this);
     }
 
     handleChange(e) {
@@ -24,7 +25,6 @@ class AdminView extends React.Component {
     }
 
     handleRadioClick(e) {
-      // console.log(`add Member handleSelect ${e.target.id} and ${e.target.checked}`);
       // console.log(`NORMAL ${normal.id} and ${normal.checked}`);
       // console.log(`ADMIN ${admin.id} and ${admin.checked}`);
       let nextState = {};
@@ -33,16 +33,35 @@ class AdminView extends React.Component {
       } else {
         nextState['permission'] = 'NORMAL';
       }
+
       this.setState(nextState);
     }
 
     handleAddMember(){
-      console.log(`username: ${this.state.username}
-                  firstname: ${this.state.firstname}
-                  lastname: ${this.state.lastname}
-                  password: ${this.state.password}
-                  email: ${this.state.email}
-                  permission: ${this.state.permission}`);
+      let memberData = {
+        username: this.state.username,
+        firstname: this.state.firstname,
+        lastname: this.state.lastname,
+        password: this.state.password,
+        email: this.state.email,
+        permission: this.state.permission
+      };
+
+      // console.log(`username: ${this.state.username}
+      //             firstname: ${this.state.firstname}
+      //             lastname: ${this.state.lastname}
+      //             password: ${this.state.password}
+      //             email: ${this.state.email}
+      //             permission: ${this.state.permission}`);
+
+      this.props.onAddMember(memberData).then(
+          () => {
+              this.setState({
+                  memberData: []
+              });
+          }
+      );
+
     }
 
 

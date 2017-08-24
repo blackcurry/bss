@@ -8,10 +8,12 @@ class AdminMember extends React.Component {
     super(props);
     this.state = {
       cols : [
-        { key: '_id', label: '_id' },
         { key: 'username', label: 'username' },
         { key: 'password', label: 'password' },
-        { key: '__v', label: '__v' },
+        { key: 'firstname', label: 'firstname' },
+        { key: 'lastname', label: 'lastname' },
+        { key: 'email', label: 'email' },
+        { key: 'permission', label: 'permission' },
         { key: 'created', label: 'created' }
       ]
     };

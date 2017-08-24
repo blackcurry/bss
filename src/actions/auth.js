@@ -5,7 +5,9 @@ import {
     AUTH_GET_STATUS,
     AUTH_GET_STATUS_SUCCESS,
     AUTH_GET_STATUS_FAILURE,
-    AUTH_LOGOUT
+    AUTH_LOGOUT,
+    AUTH_ADD_MEMBER_SUCCESS,
+    AUTH_ADD_MEMBER_FAILURE
 } from './ActionTypes';
 import axios from 'axios';
 
@@ -74,5 +76,40 @@ export function logoutRequest() {
 export function logout() {
     return {
         type: AUTH_LOGOUT
+    };
+}
+
+/*
+  ADD MEMBER
+*/
+export function addMemberRequest(memberdata) {
+  console.log(`ACTION addMemberRequest ===${memberdata.username}`);
+  return (dispatch) => {
+    return axios.post('/api/account/addmember',{
+      username : memberdata.username,
+      password : memberdata.password,
+      firstname : memberdata.firstname,
+      lastname : memberdata.lastname,
+      email : memberdata.email,
+      permission : memberdata.permission
+    }).then((response) => {
+        dispatch(addMemberSuccess());
+      }).catch((error) => {
+        dispatch(addMemberFailure(error.response.data.code));
+      }
+    );
+  };
+}
+
+export function addMemberSuccess() {
+    return {
+        type: AUTH_ADD_MEMBER_SUCCESS
+    };
+}
+
+export function addMemberFailure(error) {
+    return {
+        type: AUTH_ADD_MEMBER_FAILURE,
+        error
     };
 }

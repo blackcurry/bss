@@ -66,7 +66,10 @@ class AdminMemberView extends React.Component {
             return (<tr key={item._id}>
               <td>{item.username}</td>
               <td>{item.password}</td>
-              <td>{item.__v} </td>
+              <td>{item.firstname} </td>
+              <td>{item.lastname}</td>
+              <td>{item.email}</td>
+              <td>{item.permission}</td>
               <td>{item.created}</td>
             </tr>);
         });

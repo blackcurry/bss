@@ -5,7 +5,7 @@ const initialState = {
   login: {
       status: 'INIT'
   },
-  register: {
+  add: {
       status: 'INIT',
       error: -1
   },
@@ -70,6 +70,20 @@ export default function auth(state, action) {
         status: {
           isLoggedIn: { $set: false },
           currentUser: { $set: '' }
+        }
+      });
+
+    case types.AUTH_ADD_MEMBER_SUCCESS:
+      return update(state, {
+        add: {
+          status: { $set: 'SUCCESS' },
+        }
+      });
+    case types.AUTH_ADD_MEMBER_FAILURE:
+      return update(state, {
+        add: {
+          status: { $set: 'FAILURE' },
+          error: { $set: action.error }
         }
       });
     default:

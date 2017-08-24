@@ -6,6 +6,10 @@ const Schema = mongoose.Schema;
 const Account = new Schema({
     username: String,
     password: String,
+    firstname: String,
+    lastname: String,
+    email: String,
+    permission:String,
     created: { type: Date, default: Date.now }
 });
 
