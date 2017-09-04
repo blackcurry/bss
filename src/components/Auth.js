@@ -90,9 +90,8 @@ class Auth extends React.Component {
 
         return(
             <div className="container auth">
-                <Link className="logo" to="/">BSS</Link>
                 <div className="card">
-                    <div className="header blue white-text center">
+                    <div className="header red lighten-2 white-text center">
                         <div className="card-content">LOGIN</div>
                     </div>
                     { loginView }
